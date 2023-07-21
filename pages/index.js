@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Axios from 'axios';
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const allCards = getCardNames();
   const table = dealCards();
   return {
