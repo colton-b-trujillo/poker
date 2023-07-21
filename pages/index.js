@@ -27,13 +27,16 @@ export default function Home({ allCards, table }) {
   const callOutcomeAPI = () => {
     Axios.get(getAPIURL(table.handOne,table.handTwo,table.cc)).then(res => {
       console.log(res.data);
-      res.data.winners.map(winner =>(console.log(winner.result)));
+      res.data.winners.map(winner =>{
+        document.getElementById('statusArea').appendChild(document.createTextNode(winner.result))
+      });
     });
   }
 
 
 
   return (
+    <>
     <div className={utilStyles.wrapper}>
       <div className={utilStyles.topRow}>
         <div className={utilStyles.topLeft}>
@@ -47,6 +50,12 @@ export default function Home({ allCards, table }) {
       {renderCards(table.handTwo)}
       </div>
     </div>
+    <div className={utilStyles.controlRow}>
+      <button className={utilStyles.button} onClick={callOutcomeAPI}>Show Winners</button>
+      <span className={utilStyles.statusArea} id='statusArea'>WINNING HAND: </span>      
+    </div>
+
+        </>
   )
 }
 
