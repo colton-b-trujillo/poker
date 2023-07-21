@@ -39,8 +39,6 @@ export default function Home({ allCards, table }) {
         <div className={utilStyles.topLeft}>
       {renderCards(table.handOne)}
        </div>
-       <div className={utilStyles.topRight}>
-       </div>
       </div>
       <div className={utilStyles.middleRow}>
       {renderCards(table.cc)}
