@@ -29,6 +29,7 @@ export default function Home({ allCards, table }) {
       console.log(res.data);
       res.data.winners.map(winner =>{
         document.getElementById('statusArea').appendChild(document.createTextNode(winner.result))
+        document.getElementById('button').disabled = true;
       });
     });
   }
@@ -51,7 +52,7 @@ export default function Home({ allCards, table }) {
       </div>
     </div>
     <div className={utilStyles.controlRow}>
-      <button className={utilStyles.button} onClick={callOutcomeAPI}>Show Winners</button>
+      <button className={utilStyles.button} id='button' onClick={callOutcomeAPI}>Show Winners</button>
       <span className={utilStyles.statusArea} id='statusArea'>WINNING HAND: </span>      
     </div>
 
