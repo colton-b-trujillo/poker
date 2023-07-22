@@ -27,10 +27,9 @@ export default function Home({ allCards, table }) {
   const callOutcomeAPI = () => {
     Axios.get(getAPIURL(table.handOne,table.handTwo,table.cc)).then(res => {
       console.log(res.data);
-      res.data.winners.map(winner =>{
-        document.getElementById('statusArea').appendChild(document.createTextNode(winner.result))
-        document.getElementById('button').disabled = true;
-      });
+      let winnerText = res.data.winners.map(winner => winner.result).join(',');
+      document.getElementById('statusArea').appendChild(document.createTextNode(winnerText))
+      document.getElementById('button').disabled = true;
     });
   }
 
@@ -62,8 +61,8 @@ export default function Home({ allCards, table }) {
 
 
 function getAPIURL(playerOneHand, playerTwoHand, flop){
-  let pc1 = playerOneHand.join(',');
-  let pc2 = playerTwoHand.join(',');
+  let pc1 = '8D,8S';//playerOneHand.join(',');
+  let pc2 = '8C,8H';//playerTwoHand.join(',');
   let cc = flop.join(',');
   const baseURL = `https://api.pokerapi.dev/v1/winner/texas_holdem?cc=${cc}&pc[]=${pc1}&pc[]=${pc2}`
   return baseURL;
