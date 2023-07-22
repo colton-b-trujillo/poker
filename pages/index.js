@@ -61,8 +61,8 @@ export default function Home({ allCards, table }) {
 
 
 function getAPIURL(playerOneHand, playerTwoHand, flop){
-  let pc1 = '8D,8S';//playerOneHand.join(',');
-  let pc2 = '8C,8H';//playerTwoHand.join(',');
+  let pc1 = playerOneHand.join(',');
+  let pc2 = playerTwoHand.join(',');
   let cc = flop.join(',');
   const baseURL = `https://api.pokerapi.dev/v1/winner/texas_holdem?cc=${cc}&pc[]=${pc1}&pc[]=${pc2}`
   return baseURL;
