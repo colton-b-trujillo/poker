@@ -21,7 +21,7 @@ export default function Home({ allCards, table }) {
   function renderCards(cards){
     return cards.map((card, i) => {
       const imgSrc = `/card_images/${card}.PNG`;
-      return <Image src={imgSrc} width='150' height='200' alt={imgSrc} key={imgSrc}/>})
+      return <Image src={imgSrc} objectFit='cover' width={182} height={264} alt={imgSrc} key={imgSrc} layout='intrinsic'/>})
   }
 
   const callOutcomeAPI = () => {
@@ -38,10 +38,8 @@ export default function Home({ allCards, table }) {
   return (
     <>
     <div className={utilStyles.wrapper}>
-      <div className={utilStyles.topRow}>
-        <div className={utilStyles.topLeft}>
+      <div className={[utilStyles.topRow, utilStyles.cardSet]}>
       {renderCards(table.handOne)}
-       </div>
       </div>
       <div className={utilStyles.middleRow}>
       {renderCards(table.cc)}
