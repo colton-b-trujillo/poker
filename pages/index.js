@@ -38,7 +38,7 @@ export default function Home({ allCards, table }) {
   return (
     <>
     <div className={utilStyles.wrapper}>
-      <div className={[utilStyles.topRow, utilStyles.cardSet]}>
+      <div className={utilStyles.topRow}>
       {renderCards(table.handOne)}
       </div>
       <div className={utilStyles.middleRow}>
@@ -49,6 +49,7 @@ export default function Home({ allCards, table }) {
       </div>
     </div>
     <div className={utilStyles.controlRow}>
+    <button className={utilStyles.button} id='refreshButton' onClick={()=>location.reload()}>Deal</button>
       <button className={utilStyles.button} id='button' onClick={callOutcomeAPI}>Show Winners</button>
       <span className={utilStyles.statusArea} id='statusArea'>WINNING HAND: </span>      
     </div>
