@@ -21,7 +21,7 @@ export default function Home({ allCards, table }) {
   function renderCards(cards){
     return cards.map((card, i) => {
       const imgSrc = `/card_images/${card}.PNG`;
-      return <Image src={imgSrc} objectFit='cover' width={182} height={264} alt={imgSrc} key={imgSrc} layout='intrinsic' sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 15vw"/>})
+      return <Image src={imgSrc} objectFit='cover' width={90} height={132} alt={imgSrc} key={imgSrc} sizes="(max-width: 420px) 50vw, (max-width: 1200px) 25vw, 15vw"/>})
   }
 
   const callOutcomeAPI = () => {
