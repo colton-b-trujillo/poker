@@ -4,6 +4,7 @@
   background-color: #35654d;
   width: 100vw;
   height: 89vh;
+  grid-gap: 2.5px;
 }
 
 .cardSet{
