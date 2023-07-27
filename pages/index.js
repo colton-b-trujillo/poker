@@ -44,7 +44,7 @@ export default function Home({ allCards, table }) {
       <div className={utilStyles.middleRow}>
       {renderCards(table.cc)}
       </div>
-      <div className={utilStyles.bottomRight}>
+      <div className={utilStyles.bottomRow}>
       {renderCards(table.handTwo)}
       </div>
    
