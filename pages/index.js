@@ -21,7 +21,7 @@ export default function Home({ allCards, table }) {
   function renderCards(cards){
     return cards.map((card, i) => {
       const imgSrc = `/card_images/${card}.PNG`;
-      return <Image src={imgSrc} objectFit='cover' width={182} height={264} alt={imgSrc} key={imgSrc} layout='intrinsic'/>})
+      return <Image src={imgSrc} objectFit='cover' width={182} height={264} alt={imgSrc} key={imgSrc} layout='intrinsic' sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 15vw"/>})
   }
 
   const callOutcomeAPI = () => {
@@ -47,13 +47,17 @@ export default function Home({ allCards, table }) {
       <div className={utilStyles.bottomRight}>
       {renderCards(table.handTwo)}
       </div>
-    </div>
+   
     <div className={utilStyles.controlRow}>
-    <button className={utilStyles.button} id='refreshButton' onClick={()=>location.reload()}>Deal</button>
-      <button className={utilStyles.button} id='button' onClick={callOutcomeAPI}>Show Winners</button>
-      <span className={utilStyles.statusArea} id='statusArea'>WINNING HAND: </span>      
+      <div className={utilStyles.buttonContainer}>
+        <button className={utilStyles.button} id='refreshButton' onClick={()=>location.reload()}>Deal</button>
+        <button className={utilStyles.button} id='button' onClick={callOutcomeAPI}>Show Winners</button>
+      </div>
+      <div className={utilStyles.statusBox}>
+        WINNING HAND: <span id='statusArea'></span>
+      </div>      
     </div>
-
+    </div>
         </>
   )
 }
