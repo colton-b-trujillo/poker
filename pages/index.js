@@ -37,16 +37,9 @@ export default function Home({ allCards, table }) {
 
   return (
     <>
-    <div className={utilStyles.wrapper}>
-      <div className={utilStyles.topRow}>
       {renderCards(table.handOne)}
-      </div>
-      <div className={utilStyles.middleRow}>
       {renderCards(table.cc)}
-      </div>
-      <div className={utilStyles.bottomRow}>
       {renderCards(table.handTwo)}
-      </div>
    
     <div className={utilStyles.controlRow}>
       <div className={utilStyles.buttonContainer}>
@@ -57,7 +50,7 @@ export default function Home({ allCards, table }) {
         WINNING HAND: <span id='statusArea'></span>
       </div>      
     </div>
-    </div>
+    
         </>
   )
 }
