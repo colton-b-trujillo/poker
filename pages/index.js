@@ -4,7 +4,7 @@ import { getCardNames, dealCards } from '../lib/cards';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Axios from 'axios';
-
+import 'tailwindcss/tailwind.css';
 export async function getServerSideProps() {
   const allCards = getCardNames();
   const table = dealCards();
@@ -19,9 +19,12 @@ export async function getServerSideProps() {
 export default function Home({ allCards, table }) {
 
   function renderCards(cards){
+    const MAX_CARD_HEIGHT = 50;
+    const MAX_CARD_WIDTH = 23;
+    const CARD_CSS = `max-h-50`;
     return cards.map((card, i) => {
       const imgSrc = `/card_images/${card}.PNG`;
-      return <Image src={imgSrc} width={125} height={180} alt={imgSrc} key={imgSrc} sizes="(max-width: 420px) 50vw, (max-width: 1200px) 25vw, 15vw"/>})
+      return <img src={imgSrc} className= {"max-h-30 lg:max-h-60" + (i == 0?' col-start-1':' col-start-auto')} alt={imgSrc} key={imgSrc}/>})
   }
 
   const callOutcomeAPI = () => {
@@ -37,21 +40,22 @@ export default function Home({ allCards, table }) {
 
   return (
     <>
-      {renderCards(table.handOne)}
-      {renderCards(table.cc)}
-      {renderCards(table.handTwo)}
-   
-    <div className={utilStyles.controlRow}>
-      <div className={utilStyles.buttonContainer}>
-        <button className={utilStyles.button} id='refreshButton' onClick={()=>location.reload()}>Deal</button>
-        <button className={utilStyles.button} id='button' onClick={callOutcomeAPI}>Show Winners</button>
+      <div className="grid grid-cols-5 gap-1">
+                {renderCards(table.handOne)}
+                {renderCards(table.cc)}
+                {renderCards(table.handTwo)}
+                </div>
+
+        <div className={utilStyles.controlRow}>
+        <div className={utilStyles.buttonContainer}>
+          <button className={utilStyles.button} id='refreshButton' onClick={()=>location.reload()}>Deal</button>
+          <button className={utilStyles.button} id='button' onClick={callOutcomeAPI}>Show Winners</button>
+        </div>
+        <div className={utilStyles.statusBox}>
+          WINNING HAND: <span id='statusArea'></span>
+        </div>      
       </div>
-      <div className={utilStyles.statusBox}>
-        WINNING HAND: <span id='statusArea'></span>
-      </div>      
-    </div>
-    
-        </>
+      </>
   )
 }
 
