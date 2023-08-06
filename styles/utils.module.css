@@ -9,6 +9,11 @@
   grid-gap: 2.5px;
 }
 
+.statusLine{
+  padding-top: 10px;
+  margin-left: 1%;
+  font-weight: bold;
+}
 .cardSet{
   float:left;
   display:inline;
