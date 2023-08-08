@@ -1,24 +1,9 @@
 
-
-.wrapper {
-  display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
-  background-color: #35654d;
-  width: 100vw;
-  height: 89vh;
-  grid-gap: 2.5px;
-}
-
 .statusLine{
   padding-top: 10px;
   margin-left: 1%;
   font-weight: bold;
-  font-size: larger;
-}
-.cardSet{
-  float:left;
-  display:inline;
-  width: 50%
+  font-size: large;
 }
 
 .controlRow{
@@ -48,6 +33,7 @@
   text-align: left;
   margin:auto;
 }
+
 .button{
   display: inline-block;
 outline: 0;

@@ -1,6 +1,7 @@
-import Head from 'next/head'
-import utilStyles from '../styles/utils.module.css'
+import Head from 'next/head';
+import utilStyles from '../styles/utils.module.css';
 import { getCardNames, dealCards } from '../lib/cards';
+import localFont from 'next/font/local';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Axios from 'axios';
@@ -31,7 +32,8 @@ export default function Home({ allCards, table }) {
     Axios.get(getAPIURL(table.handOne,table.handTwo,table.cc)).then(res => {
       console.log(res.data);
       let winnerText = res.data.winners.map(winner => winner.result).join(',');
-      document.getElementById('statusArea').appendChild(document.createTextNode(winnerText))
+      let presentedText = winnerText.replace(/_/g, ' ').toUpperCase();
+      document.getElementById('statusArea').appendChild(document.createTextNode(presentedText))
       document.getElementById('button').disabled = true;
     });
   }
@@ -42,7 +44,7 @@ export default function Home({ allCards, table }) {
     <div className= "bg-green-800 h-screen">
       <div className="grid grid-cols-5 gap-1 bg-green-800 h-fit">
                 {renderCards(table.handOne)}
-                <div className={utilStyles.statusLine} >WINNING HAND: <div id='statusArea'></div></div>
+                <div className={utilStyles.statusLine} ><u>WINNING HAND</u><div id='statusArea'></div></div>
                 {renderCards(table.cc)}
                 {renderCards(table.handTwo)}
                 </div>
