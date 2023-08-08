@@ -39,21 +39,21 @@ export default function Home({ allCards, table }) {
 
 
   return (
-    <>
-      <div className="grid grid-cols-5 gap-1 bg-green-800">
+    <div className= "bg-green-800 h-screen">
+      <div className="grid grid-cols-5 gap-1 bg-green-800 h-fit">
                 {renderCards(table.handOne)}
+                <div className={utilStyles.statusLine} >WINNING HAND: <div id='statusArea'></div></div>
                 {renderCards(table.cc)}
                 {renderCards(table.handTwo)}
                 </div>
-                <div className={utilStyles.statusLine} >WINNING HAND: <span id='statusArea'></span></div>
+      
         <div className={utilStyles.controlRow}>
-        
-        <div className={utilStyles.buttonContainer}>
+          <div className={utilStyles.buttonContainer}>
           <button className={utilStyles.button} id='refreshButton' onClick={()=>location.reload()}>Deal</button>
           <button className={utilStyles.button} id='button' onClick={callOutcomeAPI}>Show Winners</button>
         </div>    
       </div>
-      </>
+      </div>
   )
 }
 
